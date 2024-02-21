@@ -20,7 +20,7 @@ class Program
             Name = Console.ReadLine();
         }
         //Nhập loại khách hàng
-        Console.Write("Enter type of customer: \n 1 for Household \n 2 for Administrative agency \n 3 for Production Units \n 4 for Business services  ");
+        Console.Write("Enter type of customer: \n 1 for Household \n 2 for Administrative agency \n 3 for Production Units \n 4 for Business services \n ");
         TypeoC = Convert.ToInt32(Console.ReadLine());
         //Nếu loại khách hàng bị lỗi
         while (TypeoC <= 0 || TypeoC > 4)
@@ -35,7 +35,7 @@ class Program
         //Nhập vào mét khối nước tháng này
         Console.Write("Enter water meter readings of this month: ");
         WaoTm = Convert.ToDouble(Console.ReadLine());
-        //Lấy đối só từ người dùng rồi in ra giá trị
+        ////Sau khi lấy đối só từ người dùng bằng các phương thức thì gọi tên các phương thức để lấy giá trị từ chương trình rồi in ra giá trị lên màn hình
         NameofCustomer(Name);
         TypeofCustomer(TypeoC, WaoLm, WaoTm);
         PriceofWater(TypeoC, WaoLm, WaoTm);
@@ -45,7 +45,7 @@ class Program
     {
         Console.WriteLine("Name of customer: {0}", Name);
     }
-    //Hàm tìm loại khách hàng
+    //Hàm trả về loại khách hàng
     static void TypeofCustomer(int TypeoC, double WaoLm, double WaoTm)
     {
         if (TypeoC == 1)
@@ -81,7 +81,6 @@ class Program
         }
         //Tính tiền nước tháng này dựa theo khối lượng nước
         double price = 0;
-
         if (TypeoC == 1)
         {
             Console.Write("Enter number of family members: ");
@@ -92,11 +91,8 @@ class Program
                 member= Convert.ToInt32(Console.ReadLine());
             }
             double WoM = (WaoTm - WaoLm) / member;
-                
 
-            
             Console.WriteLine("Water consumption per family member: {0:F2}", WoM);
-
             if (WoM <= 10 && WoM >= 0)
             {
                 price = (WoM * 5.973 * 0.1 + WoM * 5.973)*1.1;
